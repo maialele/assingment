@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Clone') {
+            steps {
+                git clone 'https://github.com/maialele/assingment.git'
+            }
+        }
+        stage('Build') {
             steps {
                 sh 'docker --version'
+                sh 'docker build --tag flask-app .'
             }
         }
     }
