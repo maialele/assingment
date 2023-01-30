@@ -7,6 +7,7 @@ pipeline {
                 my_sudo_pass = credentials('SUDO_PASS')               
             }
             steps {
+                sh 'whoami'
                 sh 'docker --version'
                 sh 'docker build --tag flask-app .'
                 sh 'echo $my_sudo_pass | sudo -S docker tag flask-app:latest maiale/repo:flask-app'
