@@ -1,4 +1,10 @@
 from flask import Flask
+import docker
+
+cli = docker.DockerClient()
+containers = cli.containers.list()
+print(containers)
+
 app = Flask(__name__)
   
 @app.route('/')
