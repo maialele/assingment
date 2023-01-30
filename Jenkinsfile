@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git clone 'https://github.com/maialele/assingment.git'
+                sh 'git clone 'https://github.com/maialele/assingment.git''
                 cd assingment
             }
         }
