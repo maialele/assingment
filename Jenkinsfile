@@ -4,15 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             environment {
-                my_sudo_pass = credentials('SUDO_PASS')               
+                my_docker_pass = credentials('DOCKER_PASS')               
             }
             steps {
-                sh 'whoami'
-                sh 'docker --version'
                 sh 'docker build --tag flask-app .'
-                sh 'echo $my_sudo_pass | sudo -S docker tag flask-app:latest maiale/repo:flask-app'
-                sh 'sudo docker login'
-                sh 'echo $my_sudo_pass | sudo docker push maiale/repo:flask-app'
+                sh 'docker tag flask-app:latest maiale/repo:flask-app'
+                sh 'docker login'
+                sh 'docker push maiale/repo:flask-app'
             }
         }
     }
