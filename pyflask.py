@@ -3,12 +3,12 @@ import docker
 
 cli = docker.DockerClient()
 containers = cli.containers.list()
-print(containers)
+
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return render_template ("index.html", stringContainers=''.join(str(x) for x in containers))
+def display_containers():
+    return render_template ("index.html", stringContainers=containers)
 if __name__ == '__main__':
 	app.run(debug=True)
