@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import docker
 
 cli = docker.DockerClient()
@@ -6,11 +6,9 @@ containers = cli.containers.list()
 print(containers)
 
 app = Flask(__name__)
-  
-@app.route('/')
+
+@app.route("/")
 def hello():
-    return "Hello World"
-  
-  
-if __name__ == "__main__":
-    app.run(host ='0.0.0.0', port = 5001, debug = True) 
+    return render_template ("index.html", stringContainers=''.join(str(x) for x in containers))
+if __name__ == '__main__':
+	app.run(debug=True)
