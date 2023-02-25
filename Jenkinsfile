@@ -14,7 +14,7 @@ pipeline {
                 sh 'docker push maiale/repo:flask-app'
                 sh 'echo $my_sudo_pass | sudo -S docker ps >> active_containers'
                 sh 'docker run -d -p 5000:5000 --name flask-app maiale/repo:flask-app'
-                sh 'echo $my_sudo_pass | sudo -S cp active_containers flask-app:/active_containers'
+                sh 'echo $my_sudo_pass | sudo -S cp active_containers flask-app:/'
             }
         }
     }
