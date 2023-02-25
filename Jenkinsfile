@@ -6,7 +6,10 @@ pipeline {
             steps {
                 try {
                     sh 'docker rm flask-app'
-                }   
+                } 
+                catch (err) {
+                    echo "no flask container exists"
+                  }
             }
         }
         stage('Build') {
