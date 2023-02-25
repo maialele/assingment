@@ -12,7 +12,6 @@ pipeline {
         stage('Build') {
             environment {
                 my_docker_pass = credentials('DOCKER_PASS')
-                my_sudo_pass = credentials('SUDO_PASS')
             }
             steps {
                 sh 'docker build --tag flask-app .'
