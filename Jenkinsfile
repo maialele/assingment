@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Remove Artifacts') {
             steps {
-                sh 'docker rm flask-app'  
+                try {
+                    sh 'docker rm flask-app'
+                }   
             }
         }
         stage('Build') {
