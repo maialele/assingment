@@ -5,7 +5,7 @@ pipeline {
         stage('Remove Artifacts') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "docker rm flask-app"
+                    sh "docker rm --force flask-app"
                 }
             }
         }
