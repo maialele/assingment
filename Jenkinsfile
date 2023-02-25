@@ -24,7 +24,7 @@ pipeline {
         }
          stage('Deploy') {
              steps {
-                 sh 'docker run --privileged -d -p 5000:5000 --name flask-app maiale/repo:flask-app'
+                 sh 'docker run --privileged -d -p 5000:5000  -v /var/run/docker.sock:/var/run/docker.sock --name flask-app maiale/repo:flask-app'
                  /* sh 'echo $my_sudo_pass | sudo -S cp active_containers flask-app:/' */
              }
          }
