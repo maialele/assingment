@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 import docker
 
-cli = docker.DockerClient()
-containers = cli.containers.list()
+client = docker.from_env()
+containers = client.containers.list()
 
 
 app = Flask(__name__)
