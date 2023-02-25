@@ -3,10 +3,10 @@ pipeline {
 
     stages {
         stage('Remove Artifacts') {
-            try {
-                sh 'docker rm flask-app'
-            } catch (err) {
-                echo "no flask container exists"
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "docker rm flask-app"
+                }
             }
         }
         stage('Build') {
