@@ -33,7 +33,6 @@ pipeline {
              steps {
                 sh 'docker build --tag nginx-proxy nginx/'
                 sh 'docker tag flask-app:latest maiale/repo:nginx-proxy'
-                sh 'echo $my_docker_pass | docker login --username maiale --password-stdin'
                 sh 'docker push maiale/repo:nginx-proxy'
              }
          }
