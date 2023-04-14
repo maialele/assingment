@@ -40,7 +40,7 @@ pipeline {
         
          stage('Deploy NGINX server') {
              steps {
-                 sh 'docker run -d -p 801:801 --name nginx-proxy maiale/repo:nginx-proxy'
+                 sh 'docker run -d -p 802:802 --name nginx-proxy maiale/repo:nginx-proxy'
              }
          }
         
