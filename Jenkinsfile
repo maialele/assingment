@@ -33,7 +33,7 @@ pipeline {
          stage('Build NGINX image') {
              steps {
                 sh 'docker build --tag nginx-proxy nginx/'
-                sh 'docker tag flask-app:latest maiale/repo:nginx-proxy'
+                sh 'docker tag nginx-proxy:latest maiale/repo:nginx-proxy'
                 sh 'docker push maiale/repo:nginx-proxy'
              }
          }
