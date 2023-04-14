@@ -7,6 +7,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh "docker rm --force flask-app"
+                    sh "docker rm --force nginx-proxy"
                 }
             }
         }
